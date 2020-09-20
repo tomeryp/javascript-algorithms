@@ -71,7 +71,23 @@ describe('Stack', () => {
     stack.push(1);
     stack.push(2);
     stack.push(3);
+    stack.pop();
 
-    expect(stack.toArray()).toEqual([3, 2, 1]);
+    expect(stack.toArray()).toEqual([2, 1]);
+  });
+
+  it('toArray should return a new array', () => {
+    const stack = new Stack();
+
+    expect(stack.peek()).toBeNull();
+
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+
+    const arr = stack.toArray();
+    arr[0] = 77;
+
+    expect(stack.peek()).toEqual(3);
   });
 });
